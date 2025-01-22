@@ -1,0 +1,16 @@
+<h1> Edit Task </h1>
+
+
+
+<div class="box-body">
+    <%= bootstrap_form_for( :task ,url: task_path(@task), method: :patch ) do |f| %>
+        <%= f.text_field :todo, class: "form-control" %>
+
+        <%= f.text_area :description %>
+
+        <%= f.check_box :complete %>
+
+        <%= f.submit "Add Task", class: "btn btn-warning"%>
+    <% end %>
+
+</div>

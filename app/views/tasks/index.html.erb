@@ -1,0 +1,49 @@
+    <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Simple Tables
+        <small>preview of simple tables</small>
+      </h1>
+        <%= link_to 'Add Task', new_task_path, class: 'btn btn-info pull-right'%>
+    </section>
+
+
+     <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+    <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bordered Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Task</th>
+                  <th>Description</th>
+                  <th>Completed</th>
+                  <th style="width: 40px">Action</th>
+                </tr>
+                    <% @tasks.each_with_index do |task, index| %>
+                <tr>
+                        <td><%= "#{index + 1}" %></td>
+                        <td><%= task.todo %></td>
+                        <td><%= task.description %></td>
+                        <td><%= task.complete %></td>
+                        <td><%= link_to 'Edit', edit_task_path(task), class: 'btn btn-warning' %> | 
+                            <%= link_to 'Delete', task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %></td>
+                </tr>
+                    <% end %>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+              </ul>
+            </div>
+          </div>
+          </div>
+          </section>
+          </div>
+        

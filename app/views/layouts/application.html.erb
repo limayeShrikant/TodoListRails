@@ -6,9 +6,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= javascript_include_tag href="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"%>
+    <%= javascript_include_tag href="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js" %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if ['registrations', 'sessions', 'passwords', 'welcomes'].include?(controller.controller_name) %>
+      <%= yield %>
+    <% else %>
+     <body class="fixed skin-blue sidebar-mini sidebar-collapse">
+      <%= render 'layouts/navigation/layout'%>
+      <div class="wrapper">
+        <div class="content-wrapper">
+          <section class="content-header">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+            <%= yield %>
+          </section>
+        </div>
+        <%= render 'layouts/navigation/footer' %>
+      </div>
+    </body>
+    <% end %>
   </body>
 </html>

@@ -1,0 +1,36 @@
+<div class="container" id="sign-up-form">
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <h3>Edit <small><%= current_user.full_name %></small></h3>
+
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+
+                <%= f.text_field :first_name, placeholder: "first name", class: 'form-control'%>
+
+                <%= f.text_field :last_name, placeholder: "last name", class: 'form-control' %>
+
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                <% if @minimum_password_length %>
+                  <br />
+                  <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+
+                <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+
+                <%= f.submit "Update", class: 'btn sign-up-button' %>
+      <% end %>
+      <br>
+      <%= link_to "Back", :back %>
+          </div>
+        </div>
+      </div>
